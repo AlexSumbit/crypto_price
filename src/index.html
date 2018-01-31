@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+        <link rel="stylesheet" href="style/main.css">
+        <title>Bitcon Price</title>
+    </head>
+    <body>
+        
+        <div class="container">
+            <header class="header">
+                <h1 class="header__title">Crypto Price</h1>
+                <h2 class="header__subtitle">Dynamics of prices for crypto currency</h2>
+            </header>
+
+            <main class="main">
+                <canvas class="js-canvas canvas" width="850" height="300">Your browser not support canvas</canvas>
+                <form class="js-form form" method="GET">
+                    <input type="text" name="from" placeholder="From" class="input js-date">
+                    <input type="text" name="to" placeholder="To" class="input js-date">
+                    <div class="input input--select select js-select">
+                        <div class="select__header">Select currency</div>
+                        <div class="select__body">
+                            <label class="select-item">
+                                <input type="radio" name="currency" class="select-item__radio">
+                                <span class="select-item__title">Etherium</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="input input--btn">Get</button>
+                </form>
+            </main>
+
+            <footer class="footer">
+                <site class="footer__author">AlexSumbit</site>
+                <a href="https://github.com/AlexSumbit" class="footer__link" target="_blank">https://github.com/AlexSumbit</a>
+            </footer>
+        </div>
+
+        <script src="script/DatePickerX.min.js"></script>
+        <script src="script/script.js"></script>
+    </body>
+</html>
