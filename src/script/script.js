@@ -43,31 +43,38 @@ window.onload = function(){
     };
 
     let app = {
+        currencies: {},
+
         init: function(){
             this.getCurrencies();
         },
         getCurrencies: function(){
             let self = this;
             let xhr = new XMLHttpRequest();
-            xhr.open('GET', 'https://api.coindesk.com/v1/bpi/currentprice.json');
+            xhr.open('GET', 'https://api.coinmarketcap.com/v1/ticker/');
             xhr.onload = function(){
                 if(xhr.readyState == 4 && xhr.status == 200){
                     let result = xhr.responseText;
+                    self.currencies = JSON.parse(result);
+                    console.log(self.currencies);
                     self.setCurrencies();
                 }
             }
             xhr.send(null);
         },
         setCurrencies: function(){
+            let self = this;
             let elements = document.querySelectorAll(".js-currencies");
             elements.forEach(function(element){
                 let tpl = element.querySelector(".js-tpl");
-                for(let i = 0; i < 50; i++){
-                    tpl.content.querySelector("input[name='currency']").value = i;
-                    tpl.content.querySelector("span").innerHTML = i;
+
+                self.currencies.forEach(function(currency){
+                    tpl.content.querySelector("input[name='currency']").value = currency.id;
+                    tpl.content.querySelector("span").innerHTML = currency.name;
+                    tpl.content.querySelector("small").innerHTML = currency.symbol;
 
                     element.appendChild(document.importNode(tpl.content, true));
-                }
+                });
             });
             select.init();
         }

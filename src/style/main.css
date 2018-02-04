@@ -535,6 +535,9 @@ body {
     background-color: rgba(255, 255, 255, 0.1); }
   .select-item__radio {
     display: none; }
+  .select-item__symbol {
+    margin-left: 10px;
+    opacity: 0.5; }
 
 .footer {
   text-align: center;
