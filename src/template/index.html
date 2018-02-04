@@ -23,11 +23,13 @@
                     <input type="text" name="to" placeholder="To" class="input js-date">
                     <div class="input input--select select js-select">
                         <div class="select__header">Select currency</div>
-                        <div class="select__body">
-                            <label class="select-item">
-                                <input type="radio" name="currency" class="select-item__radio">
-                                <span class="select-item__title">Etherium</span>
-                            </label>
+                        <div class="select__body js-currencies">
+                            <template class="js-tpl">
+                                    <label class="select-item">
+                                        <input type="radio" name="currency" class="select-item__radio">
+                                        <span class="select-item__title">Bitcoin</span>
+                                    </label>
+                            </template>
                         </div>
                     </div>
                     <button class="input input--btn">Get</button>
