@@ -118,7 +118,7 @@ body{
         }
 
         &::-webkit-scrollbar-track{
-            background-color: lighten($bg-secondary, 5);
+            background-color: lighten($bg-secondary, 10);
         }
 
         &::-webkit-scrollbar-thumb{

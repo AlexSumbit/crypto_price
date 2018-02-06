@@ -1,25 +1,4 @@
 window.onload = function(){
-    
-    let datePicker = {
-        init: function(){
-            let inputs = document.querySelectorAll(".js-date");
-            inputs.forEach(function(item){
-                item.DatePickerX.init({
-                    mondayFirst      : true,
-                    format           : 'yyyy-mm-dd',
-                    minDate          : new Date(0, 0),
-                    maxDate          : new Date(9999, 11, 31),
-                    weekDayLabels    : ['Mo', 'Tu', 'We', 'Th', 'Fr', 'St', 'Su'],
-                    shortMonthLabels : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                    singleMonthLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                    todayButton      : true,
-                    todayButtonLabel : 'Today',
-                    clearButton      : true,
-                    clearButtonLabel : 'Clear'
-                });
-            });
-        }
-    };
 
     let select = {
         init: function(){
@@ -44,9 +23,14 @@ window.onload = function(){
 
     let app = {
         currencies: {},
+        currencieData: {},
 
         init: function(){
             this.getCurrencies();
+            this.getCurrencyPrice("bitcoin");
+
+            
+
         },
         getCurrencies: function(){
             let self = this;
@@ -77,9 +61,26 @@ window.onload = function(){
                 });
             });
             select.init();
+        },
+        getCurrencyPrice: function(symbol){
+            let self = this;
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://api.coinmarketcap.com/v1/ticker/' + symbol + '/?convert=USD');
+            xhr.onload = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    let result = xhr.responseText;
+                    self.currencieData = JSON.parse(result)[0];
+                    console.log(self.currencies);
+                    self.displayCurrency();
+                }
+            }
+            xhr.send(null);
+        },
+        displayCurrency: function(){
+            let self = this;
+            //alert(self.currencieData.price_usd);
         }
     }
 
     app.init();
-    datePicker.init();
 }

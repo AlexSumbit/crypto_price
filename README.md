@@ -1,4 +1,4 @@
-# test.weblium
+# crypto_price
 
 
-[https://alexsumbit.github.io/test-weblium/src/](https://alexsumbit.github.io/test-weblium/src/)
+[https://alexsumbit.github.io/crypto_price/src/](https://alexsumbit.github.io/crypto_price/src/)
